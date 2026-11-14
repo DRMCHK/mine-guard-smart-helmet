@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "Cheick Dramé",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 0, "left": 0, "attrs": { "env": "micropython-20260406-v1.28.0", "flashSize": "8" } },
+
+    { "type": "wokwi-mpu6050", "id": "mpu1", "top": 20, "left": -190, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "hc1", "top": 150, "left": -290, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btnSos", "top": 290, "left": -250, "attrs": { "color": "red" } },
+    { "type": "wokwi-slide-switch", "id": "swWorn", "top": 300, "left": -150, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 280, "left": -60, "attrs": {} },
+
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": -60, "left": 170, "attrs": { "ppm": "400" } },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 60, "left": 200, "attrs": {} },
+
+    { "type": "wokwi-resistor", "id": "rR", "top": 270, "left": 20, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "ledR", "top": 300, "left": 110, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "rG", "top": 200, "left": 150, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "ledG", "top": 230, "left": 240, "attrs": { "color": "green" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "mpu1:VCC", "esp:3V3.1", "red", [] ],
+    [ "mpu1:GND", "esp:GND.1", "black", [] ],
+    [ "mpu1:SDA", "esp:8", "green", [] ],
+    [ "mpu1:SCL", "esp:9", "blue", [] ],
+
+    [ "gas1:VCC", "esp:3V3.2", "red", [] ],
+    [ "gas1:GND", "esp:GND.2", "black", [] ],
+    [ "gas1:AOUT", "esp:1", "orange", [] ],
+
+    [ "dht1:VCC", "esp:3V3.2", "red", [] ],
+    [ "dht1:GND", "esp:GND.3", "black", [] ],
+    [ "dht1:SDA", "esp:2", "gold", [] ],
+
+    [ "hc1:VCC", "esp:5V", "red", [] ],
+    [ "hc1:GND", "esp:GND.1", "black", [] ],
+    [ "hc1:TRIG", "esp:17", "purple", [] ],
+    [ "hc1:ECHO", "esp:18", "white", [] ],
+
+    [ "btnSos:1.l", "esp:5", "green", [] ],
+    [ "btnSos:2.l", "esp:GND.1", "black", [] ],
+
+    [ "swWorn:2", "esp:6", "green", [] ],
+    [ "swWorn:1", "esp:GND.1", "black", [] ],
+
+    [ "bz1:2", "esp:15", "orange", [] ],
+    [ "bz1:1", "esp:GND.1", "black", [] ],
+
+    [ "esp:16", "rR:1", "red", [] ],
+    [ "rR:2", "ledR:A", "red", [] ],
+    [ "ledR:C", "esp:GND.1", "black", [] ],
+
+    [ "esp:21", "rG:1", "green", [] ],
+    [ "rG:2", "ledG:A", "green", [] ],
+    [ "ledG:C", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
