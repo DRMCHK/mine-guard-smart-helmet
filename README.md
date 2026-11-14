@@ -1,4 +1,5 @@
 # MineGuard Smart Helmet — simulation Wokwi (ESP32-S3, MicroPython)
+https://wokwi.com/projects/480627419507670017
 
 Prototype de casque de sécurité pour mineur, simulé dans Wokwi. Le casque surveille en continu le gaz, la température, les chocs et les chutes, l'obstacle devant le porteur, le port du casque et un bouton SOS. Il signale le danger par une LED et un buzzer, et envoie des messages texte que la surface pourrait recevoir.
 
